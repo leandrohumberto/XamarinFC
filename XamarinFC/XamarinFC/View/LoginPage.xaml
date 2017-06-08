@@ -5,12 +5,13 @@
              BackgroundColor="MediumAquamarine"
              Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="CenterAndExpand"
-                     VerticalOptions="CenterAndExpand">
+        <StackLayout>
             <Button Text="Entrar com o Facebook"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
+                    Margin="20, 0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand"
                     TextColor="White" 
+                    FontSize="Large"
                     FontAttributes="Bold"
                     BorderColor="DarkGray"
                     BackgroundColor="DeepSkyBlue" 

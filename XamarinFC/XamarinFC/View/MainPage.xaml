@@ -1,10 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamarinFC.View.MainPage">
+             xmlns:ext="clr-namespace:XFCustomControls.Ext;assembly=XFCustomControls.Ext"
+             x:Class="XamarinFC.View.MainPage"
+             BackgroundColor="MediumAquamarine"
+             Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin Forms!" />
+        <StackLayout Margin="20" Spacing="10">
+            <ext:Picker ItemsSource="{Binding FootballClubs}" 
+                        Title="Escolha um Clube"
+                        BackgroundColor="LightSeaGreen" 
+                        SelectedItemChangedCommand="{Binding SelectedItemChangedCommand}"/>
+            <ScrollView>
+                <Label Text="{Binding CurrentAnthem}" 
+                       LineBreakMode="WordWrap" 
+                       TextColor="White" 
+                       FontSize="Large" 
+                       FontAttributes="Bold" />
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
