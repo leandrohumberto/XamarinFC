@@ -32,8 +32,8 @@ namespace XamarinFC.ViewModel
 
         private async void Initialize()
         {
-            FootballClubs = new ObservableCollection<FootballClub>(
-                await Task.FromResult(await DependencyService.Get<IFootballClubRepository>().GetClubData()));
+            var clubs = await DependencyService.Get<IFootballClubRepository>().GetClubData();
+            FootballClubs = new ObservableCollection<FootballClub>(clubs.OrderBy(c => c.Name));
         }
 
         private void ExecuteSelectedItemChangedCommand(object item)

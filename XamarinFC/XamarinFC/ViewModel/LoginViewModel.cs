@@ -20,6 +20,13 @@ namespace XamarinFC.ViewModel
 
         public LoginViewModel()
         {
+            if (Settings.IsLoggedIn)
+            {
+                Task.Run(async () => await PushAsync<MainViewModel>()).ContinueWith(x => RemovePageFromStack())
+                    .ConfigureAwait(false);
+                return;
+            }
+
             _azureService = DependencyService.Get<AzureService>();
             Title = "Xamarin FC";
         }

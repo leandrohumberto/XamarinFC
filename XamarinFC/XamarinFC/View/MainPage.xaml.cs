@@ -16,5 +16,22 @@ namespace XamarinFC.View
         {
             InitializeComponent();
         }
+
+        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!(sender is Picker))
+                return;
+
+            var picker = sender as Picker;
+
+            if (picker.SelectedIndex >= 0)
+            {
+                picker.BackgroundColor = Color.Transparent;
+            }
+            else
+            {
+                picker.BackgroundColor = Color.LightSeaGreen;
+            }
+        }
     }
 }

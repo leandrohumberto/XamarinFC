@@ -9,7 +9,8 @@
         <StackLayout Margin="20" Spacing="10">
             <ext:Picker ItemsSource="{Binding FootballClubs}" 
                         Title="Escolha um Clube"
-                        BackgroundColor="LightSeaGreen" 
+                        BackgroundColor="LightSeaGreen"
+                        SelectedIndexChanged="Picker_SelectedIndexChanged"
                         SelectedItemChangedCommand="{Binding SelectedItemChangedCommand}"/>
             <ScrollView>
                 <Label Text="{Binding CurrentAnthem}" 
