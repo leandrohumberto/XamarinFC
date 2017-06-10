@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,7 +12,7 @@ namespace XamarinFC.View
             InitializeComponent();
         }
 
-        private void Picker_SelectedIndexChanged(object sender, EventArgs e)
+        private async void Picker_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!(sender is Picker))
                 return;
@@ -32,6 +27,8 @@ namespace XamarinFC.View
             {
                 picker.BackgroundColor = Color.LightSeaGreen;
             }
+
+            await _scrollViewer.ScrollToAsync(0, 0, false);
         }
     }
 }

@@ -15,11 +15,19 @@ namespace XamarinFC.ViewModel
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        public string Title { get; protected set; }
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            protected set
+            {
+                SetProperty(ref _title, value);
+            }
+        }
+
         public bool IsBusy { get; protected set; }
 
-        protected bool SetProperty<T>(ref T storage, T value,
-            [CallerMemberName] string propertyName = null)
+        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(storage, value))
             {

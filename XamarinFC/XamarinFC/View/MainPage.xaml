@@ -12,7 +12,7 @@
                         BackgroundColor="LightSeaGreen"
                         SelectedIndexChanged="Picker_SelectedIndexChanged"
                         SelectedItemChangedCommand="{Binding SelectedItemChangedCommand}"/>
-            <ScrollView>
+            <ScrollView x:Name="_scrollViewer">
                 <Label Text="{Binding CurrentAnthem}" 
                        LineBreakMode="WordWrap" 
                        TextColor="White" 
