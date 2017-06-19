@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinFC.Helpers;
+using XamarinFC.Model.Repository;
 using XamarinFC.Services;
 using XamarinFC.View;
 
@@ -20,13 +21,6 @@ namespace XamarinFC.ViewModel
 
         public LoginViewModel()
         {
-            if (Settings.IsLoggedIn)
-            {
-                Task.Run(async () => await PushAsync<MainViewModel>()).ContinueWith(x => RemovePageFromStack())
-                    .ConfigureAwait(false);
-                return;
-            }
-
             _azureService = DependencyService.Get<AzureService>();
             Title = "Xamarin FC";
         }
@@ -38,7 +32,8 @@ namespace XamarinFC.ViewModel
 
             IsBusy = true;
 
-            await PushAsync<MainViewModel>();
+            var clubs = await DependencyService.Get<IFootballClubRepository>().GetClubsData();
+            await PushAsync<MainViewModel>(clubs);
 
             RemovePageFromStack();
 

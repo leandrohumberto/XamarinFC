@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -29,9 +30,19 @@ namespace XamarinFC.ViewModel
             Initialize();
         }
 
-        private async void Initialize()
+        public MainViewModel(IEnumerable<FootballClub> clubs)
         {
-            var clubs = await DependencyService.Get<IFootballClubRepository>().GetClubsData();
+            Title = _defaultTitle;
+            Initialize(clubs);
+        }
+
+        private async void Initialize(IEnumerable<FootballClub> clubs = null)
+        {
+            if (clubs == null)
+            {
+                clubs = await DependencyService.Get<IFootballClubRepository>().GetClubsData();
+            }
+
             FootballClubs = new ObservableCollection<FootballClub>(clubs.OrderBy(c => c.Name));
         }
 

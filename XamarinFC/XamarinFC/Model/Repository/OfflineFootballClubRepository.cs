@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using XamarinFC.Model.Entity;
 using XamarinFC.Model.Repository;
 
-[assembly: Dependency(typeof(OfflineFootballClubRepository))]
+//[assembly: Dependency(typeof(OfflineFootballClubRepository))]
 namespace XamarinFC.Model.Repository
 {
     class OfflineFootballClubRepository : IFootballClubRepository
