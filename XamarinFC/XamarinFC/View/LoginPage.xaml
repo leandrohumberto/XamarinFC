@@ -5,17 +5,20 @@
              BackgroundColor="MediumAquamarine"
              Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="CenterAndExpand"
+                     Spacing="10">
             <Button Text="Entrar com o Facebook"
                     Margin="20, 0"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="CenterAndExpand"
                     TextColor="White" 
                     FontSize="Large"
                     FontAttributes="Bold"
                     BorderColor="DarkGray"
                     BackgroundColor="DeepSkyBlue" 
                     Command="{Binding LoginCommand}"/>
+            <ActivityIndicator Color="AntiqueWhite"
+                               IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

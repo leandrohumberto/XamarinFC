@@ -25,7 +25,15 @@ namespace XamarinFC.ViewModel
             }
         }
 
-        public bool IsBusy { get; protected set; }
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            protected set
+            {
+                SetProperty(ref _isBusy, value);
+            }
+        }
 
         protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
         {
@@ -48,7 +56,7 @@ namespace XamarinFC.ViewModel
             var viewTypeName = $"XamarinFC.View.{viewModelTypeName.Substring(0, viewModelTypeName.Length - viewModelWordLength)}Page";
             var viewType = Type.GetType(viewTypeName);
 
-            var page = Activator.CreateInstance(viewType) as MainPage;
+            var page = Activator.CreateInstance(viewType) as Page;
 
             var viewModel = Activator.CreateInstance(viewModelType, args);
 
